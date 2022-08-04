@@ -23,7 +23,7 @@ Checking it works
 
 Trained firstly as `encoder` and `decoder`, and then converted to `alae` model. Smooth adversarial training and fast convergence.
 
-![Image](./assets/mnist.jpg)
+![Image](./r.png)
 
 
 
