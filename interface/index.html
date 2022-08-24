@@ -34,23 +34,23 @@ processEscapes: true
     left: 50%;
 }
 
-            #app {
-                display: none;
-            }
+#app {
+    display: none;
+}
 
-            .loader {
-                border: 16px solid #f3f3f3;
-                border-top: 16px solid #0ba0cd;
-                border-radius: 50%;
-                width: 120px;
-                height: 120px;
-                animation: spin 2s linear infinite;
-            }
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #0ba0cd;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
 
-            @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-            }
+                                                @keyframes spin {
+                                                    0% { transform: rotate(0deg); }
+                                                    100% { transform: rotate(360deg); }
+                                                }
 
         </style>
 
@@ -82,10 +82,18 @@ processEscapes: true
 
                 <p style='font-size: 0.8em;'>This article explores ideas presented in the paper <a href="./">Representation Learning for Non-Melanoma Skin Cancer using Latent Autoencoders</a>.
                     The accompanying code is available in the Github <a href="https://github.com/smthomas-sci/RepresentationLearningNon-Melanoma">repository</a>.
+
+                    <br><br>
+                    <span style="color: orangered">
+                        Note: For a smoother interactive experience, consider downloading the repository and viewing locally.
+                    </span>
                 </p>
+
 
                 <hr>
                 <br>
+
+                <h2>Learning Useful Representations</h2>
 
                 <p>Generative models tend to have good representaions for a distribution, without explicitly being asked to model
                     the input data. For examle, GANs implicity match the target distirbution by trying to generate plausible counterfeit images.
@@ -168,12 +176,17 @@ processEscapes: true
             </div>
 
 
-            <div style="width: 100%; margin: auto; text-align: center; background: black; color: white;">
-                <p>Hello world, here is a sentence or two to explain what is going on...</p>
-                <video src="imgs/sample_interpolations_6x6.mp4" controls loop height="400" style="margin: auto">
+            <div style="width: 100%; margin: auto; background: white;">
+                <div style="max-width: 700px; margin: auto;">
+
+                    <h2>Diverse Samples and Interpolations</h2>
+                    <p>Hello world, here is a sentence or two to explain what is going on...</p>
+
+                </div>
+                <div style="text-align: center;">
+                    <video src="imgs/sample_interpolations_6x6.mp4" controls loop height="400" style="margin: auto">
+                </div>
             </div>
-
-
 
 
             <section style="background-color: white; padding: 75px; margin:auto; max-width: 700px;">
