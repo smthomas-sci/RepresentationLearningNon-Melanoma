@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link href="style.css" rel="stylesheet" />
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+
+
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+tex2jax: {
+inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+processEscapes: true
+}
+});
+        </script>
+
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <style>
+#loading {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+            #app {
+                display: none;
+            }
+
+            .loader {
+                border: 16px solid #f3f3f3;
+                border-top: 16px solid #0ba0cd;
+                border-radius: 50%;
+                width: 120px;
+                height: 120px;
+                animation: spin 2s linear infinite;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
+        </style>
+
+        <script>
+            let loadFunction = function(){
+                document.getElementById('app').style.display = 'block';
+                document.getElementById('loading').style.display = 'none';
+            }
+        </script>
+    </head>
+    <body onload='loadFunction()'>
+
+        <div id="loading">
+            loading...
+            <div class='loader'></div>
+        </div>
+
+        <div id="app">
+            <div id="header" style="height: 60px; background-color: white; width: 100%;">
+                <img src="imgs/CSIRO.jpeg" height="50" style="padding: 5px">
+
+            </div>
+
+            <div style="background: white; max-width: 700px; margin: auto">
+                <h1>Representation Learning for Non-Melanoma Skin Cancer</h1>
+
+                <p style="color: gray">S.M.Thomas | 25th August 2022</p>
+                <p style="color: #0ba0cd;">Australian e-Health Research Centre, CSIRO</p>
+
+                <p style='font-size: 0.8em;'>This article explores ideas presented in the paper <a href="./">Representation Learning for Non-Melanoma Skin Cancer using Latent Autoencoders</a>.
+                    The accompanying code is available in the Github <a href="https://github.com/smthomas-sci/RepresentationLearningNon-Melanoma">repository</a>.
+                </p>
+
+                <hr>
+                <br>
+
+                <p>Generative models tend to have good representaions for a distribution, without explicitly being asked to model
+                    the input data. For examle, GANs implicity match the target distirbution by trying to generate plausible counterfeit images.
+                    However, autoecoder methods attempt to explicity model the target distribution, learning a latent representation constrained
+                    on reconstructing real images. Indeed, it is real images which are our best examples of what we want, and so being able to
+                    reconstruct them (at least initially) is a reasonable starting point. The problem is that Autoecoders don't tend to place
+                    images in a strucutured latent space. That is, not every image encoding within the representation corresponds to a real (our plausiably real)
+                    image. GANs on the other hand, do exactly that. Every point within the input domain should correspond to a realistic image.
+                </p>
+
+                <p>Adversarial Latent autoencoders are a model design which attempts to get the benefits of a strucutured latents space, as well as the
+                    ablility to encode real images.</p>
+
+
+                <p>We will be using things like $w$ and $z$, or $z \sim  \mathcal{N}(0, 1)$</p>
+
+
+                <br>
+
+                <div>
+                    <div style="display: inline-block; width: 400px; vertical-align: top">
+                        <br>
+                        <br>
+                        <p>Each image captures three layers of the skin.</p>
+                        <ul>
+                            <li class='img_hover' id="hover_ker">Keratin Layer</li>
+                            <li class='img_hover' id="hover_epi">Epidermal Layer</li>
+                            <li class='img_hover' id="hover_der">Dermal Layer</li>
+                        </ul>
+                    </div>
+                    <img id="iec_example" src="imgs/iec_regions/all.jpg">
+
+                    <script>
+
+                        let ker = document.getElementById('hover_ker');
+                        let epi = document.getElementById('hover_epi');
+                        let der = document.getElementById('hover_der');
+
+                        let example = document.getElementById('iec_example');
+
+                        ker.addEventListener('mouseover', function(){
+                            example.src = './imgs/iec_regions/keratin.png';
+                        });
+
+                        epi.addEventListener('mouseover', function(){
+                            example.src = './imgs/iec_regions/epidermis.png';
+                        });
+
+                        der.addEventListener('mouseover', function(){
+                            example.src = './imgs/iec_regions/dermis.png';
+                        });
+
+
+                        ker.addEventListener('mouseleave', function(){
+                            example.src = './imgs/iec_regions/all.jpg';
+                        });
+
+                        epi.addEventListener('mouseleave', function(){
+                            example.src = './imgs/iec_regions/all.jpg';
+                        });
+
+                        der.addEventListener('mouseleave', function(){
+                            example.src = './imgs/iec_regions/all.jpg';
+                        });
+
+
+                    </script>
+
+
+                </div>
+
+
+                <p>So we have some other stuff to say about it also...</p>
+
+            </div>
+
+
+            <div style="width: 100%; margin: 50px auto 50px auto; text-align: center; background: white;">
+                <video src="imgs/training_progress.mp4" controls loop height="200" style="margin: auto">
+            </div>
+
+
+            <div style="width: 100%; margin: auto; text-align: center; background: black; color: white;">
+                <p>Hello world, here is a sentence or two to explain what is going on...</p>
+                <video src="imgs/sample_interpolations_6x6.mp4" controls loop height="400" style="margin: auto">
+            </div>
+
+
+
+
+            <section style="background-color: white; padding: 75px; margin:auto; max-width: 700px;">
+                <h2>Concept Vectors</h1>
+                <p>And then some suff...</p>
+            </section>
+
+
+            <section style="background-color: white; margin:auto; width: 100%; text-align: center;">
+
+                <div class='concept_slider'>
+                    <img id="basket" src="imgs/concepts/basketweave/025.jpg">
+                    <br>
+
+                    <span class='slider_label'>Parakeratosis</span>
+                    <input type="range" min="0" max="50" oninput="basket_update(this)">
+                    <span class='slider_label'>Basket weave</span>
+
+                    <script>
+                        let basket = document.getElementById("basket");
+                        let basket_update = function(el){
+                            basket.src = "./imgs/concepts/basketweave/" + el.value.padStart(3, 0) + '.jpg'
+                        }
+                    </script>
+                </div>
+
+                <div class='concept_slider'>
+                    <img id="dysplasia" src="imgs/concepts/dysplasia/025.jpg">
+                    <br>
+
+                    <span class='slider_label'>+ Dysplasia</span>
+                    <input type="range" min="0" max="50" oninput="dysplasia_update(this)">
+                    <span class='slider_label'>- Dysplasia</span>
+
+                    <script>
+                        let dysplasia = document.getElementById("dysplasia");
+                        let dysplasia_update = function(el){
+                            dysplasia.src = "./imgs/concepts/dysplasia/" + el.value.padStart(3, 0) + '.jpg'
+                        }
+                    </script>
+                </div>
+
+
+                <div class='concept_slider'>
+                    <img id="inflame" src="imgs/concepts/inf/000.jpg">
+                    <br>
+
+                    <span class='slider_label'>- Inflammation</span>
+                    <input type="range" min="0" max="23" value="0" oninput="inflame_update(this)">
+                    <span class='slider_label'>+ Inflammation</span>
+
+                    <script>
+                        let inflame = document.getElementById("inflame");
+                        let inflame_update = function(el){
+                            inflame.src = "./imgs/concepts/inf/" + el.value.padStart(3, 0) + '.jpg'
+                        }
+                    </script>
+                </div>
+
+
+                <div class='concept_slider'>
+                    <img id="solar" src="imgs/concepts/solar/020.jpg">
+                    <br>
+
+                    <span class='slider_label'>- Solar Elastosis</span>
+                    <input type="range" min="0" max="40" value="20" oninput="solar_update(this)">
+                    <span class='slider_label'>+ Solar Elastosis</span>
+
+                    <script>
+                        let solar = document.getElementById("solar");
+                        let solar_update = function(el){
+                            solar.src = "./imgs/concepts/solar/" + el.value.padStart(3, 0) + '.jpg'
+                        }
+                    </script>
+                </div>
+
+            </section>
+
+            <section>
+
+                <div height="400" style="background-color: white; padding: 75px;">
+                    <img src="imgs/latent_space.gif" style="display: block; margin: auto;">
+                </div>
+
+            </section>
+
+
+
+
+            <section style="background-color: black;">
+
+                <div class="main">
+
+                    <div style="color: white; max-width: 700px; margin: auto;">
+                        <h2>Exhaustive Latent Space Exploration and Characterisation</h2>
+                        <p>Here is some stuff which needs to be written and so it will be...</p>
+                    </div>
+
+                    <div id="map">
+                        <div class="map-canvas"></div>
+                        <div id="overlay"></div>
+                    </div>
+
+
+                    <div id="display">
+                        <img alt="" id="interp" width="256" height="256" src="./imgs/grid/50_50.jpg"/>
+                    </div>
+
+                    <div id="grid">
+                        <img  width="256" height="256" src="./imgs/grid_black.jpg"/>
+                        <div id="loc"></div>
+                    </div>
+
+                    <div id="annotations">
+                        <p id="anno_content"></p>
+                    </div>
+
+
+                </div>
+
+                <script src="./grid_annos.js"></script>
+                <script src="./script.js"></script>
+
+            </section>
+
+            <section>
+                <h1>References</h1>
+                <p>
+
+                </p>
+            </section>
+
+        </div>
+    </body>
+</html>
+
+
+
+

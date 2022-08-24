@@ -1,0 +1,141 @@
+body {
+  background: white;
+  padding: 0;
+  margin: 0;
+  font-family: Roboto;
+}
+
+hr {
+  border: 1px solid lightgray;
+}
+a {
+  color: #0ba0cd;
+  font-weight: bold;
+}
+a:visited {
+  color: #0ba0cd;
+}
+
+.main {
+  width: 1200px;
+  margin: 100px auto 100px auto;
+  overflow: hidden;
+  background: black;
+}
+
+#overlay {
+  position: absolute;
+  height: 600px;
+  width: 600px;
+  pointer-events: none;
+  background: url(./imgs/grid_overlay.png);
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;
+  opacity: 0.85;
+}
+
+#map {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+  margin: 50px;
+  border: solid 2px #4447db;
+  cursor: grab;
+
+}
+
+.map-canvas {
+  position: absolute;
+  background: url(./imgs/grid_black.jpg);
+  width: 2800px;
+  height: 2800px;
+  background-size: 88%;
+  background-repeat: no-repeat;
+
+  /* Starting position - MANUAL */
+  left: -379px;
+  top: -376px;
+}
+
+#map .ui-draggable-dragging {
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+#display {
+  position: relative;
+  left: 750px;
+  top: -660px;
+  /*border: 1px solid green; */
+  display: inline-block;
+}
+
+
+#grid {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  top: -180px;
+  left: 260px;
+  border: 2px white solid;
+  border-radius: 50%;
+  overflow: hidden;    
+}   
+    
+#loc {
+  position: absolute;
+  top: 112px;
+  left: 0px;
+  width: 60px;
+  height: 60px;
+  border: solid 3px #4447db;
+} 
+
+
+#annotations {
+  position: relative;
+  top: -660px;
+  width: 450px;
+  left: 750px;
+}
+
+#anno_content {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+.concept_slider {
+  /*border: 1px solid black; */
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+}
+
+
+.concept_slider img {
+  height: 256px;
+}
+
+.slider_label {
+  font-size: 0.7em;
+  position: relative;
+  top: -8px;
+}
+
+
+#iec_example {
+  height: 256px;
+}
+.img_hover {
+  color: #0ba0cd;
+  text-decoration: underline;
+  font-weight: bold;
+  padding: 5px;
+  cursor: pointer;
+}
