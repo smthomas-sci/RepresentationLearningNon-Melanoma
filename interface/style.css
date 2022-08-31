@@ -3,6 +3,33 @@ body {
   padding: 0;
   margin: 0;
   font-family: Roboto;
+  overflow: hidden;
+}
+
+
+#loading {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+#app {
+    display: none;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #0ba0cd;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 hr {
@@ -143,3 +170,44 @@ a:visited {
 .img_hover:hover{
   color: grey;
 }
+
+
+
+
+#popup {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute; 
+} 
+
+
+#inner_pop {
+  text-align: center;
+  width: 400px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  background: white;
+  margin: auto;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+  padding: 20px 20px 10px 20px;
+
+}
+
+#okay { width: 40px;
+    background: #0ba0cd;
+    padding: 10px;
+    margin: 10px auto;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#okay:hover {
+    opacity: 0.9;
+}
+
+
+
