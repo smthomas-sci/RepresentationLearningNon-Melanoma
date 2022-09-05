@@ -71,7 +71,7 @@ processEscapes: true
             <div style="background: white; max-width: 700px; margin: auto">
                 <h1>Representation Learning for Non-Melanoma Skin Cancer</h1>
 
-                <p style="color: gray">S.M.Thomas | 25th August 2022</p>
+                <p style="color: gray">S.M.Thomas | 5th September 2022</p>
                 <p style="color: #0ba0cd;">Australian e-Health Research Centre, CSIRO</p>
 
                 <p style='font-size: 0.8em;'>This article explores ideas presented in the paper <a href="./">Representation Learning for Non-Melanoma Skin Cancer using Latent Autoencoders</a>.
@@ -85,23 +85,22 @@ processEscapes: true
                     </span>
                 </p>
 
-
                 <hr>
                 <br>
 
                 <h2>Useful Representations of Non-Melanoma Skin Cancer</h2>
-
 
                 <p>
                     Generative modelling techniques such as GANs, Diffusion Models or Autoregressive Transformers, have
                     shown unprecedented representational capacity. They take high-dimensional data inputs from a particular problem domain (e.g. images, text
                     or both), and learn a  lower-dimensional represention which captures semantic structure and approximates
                     the real world distribution. We can then sample from the distribution, generating synethic images
-                    or texts which resemble real samples. However, merely drawing samples from the distribution is limited in its application
-                    to real-world problems. Indeed, a desirable ability is to be able to project <i>real</i> data points into a structured latent
-                    space, the value of which is arguably not-obvious and also under-appreciated, particularly for high-stakes decision domains such as medical imaging.
-                    Therefore, this work attempts to showcase several ways in which learning to generate real images can in the long term improve
-                    the quality of our models, but also deliver highly interpretable outputs. This work focuses on images and text within the context of digital pathology,
+                    or texts which resmeble real-world data. However, merely drawing samples from the distribution is limited in its application
+                    to real-world problems. Indeed, a desirable ability is to be able to project existing data points into a structured latent
+                    space, not one just optimized for discriminatory tasks such as classification. Why this is desriable is arguably not-obvious
+                    and also under-appreciated, particularly for high-stakes decision domains such as medical imaging.
+                    Therefore, this work attempts to showcase several ways in which learning to generate real images can (in the long term) improve
+                    the quality of our models and also deliver highly interpretable outputs. This work focuses on images and text within the context of digital pathology,
                     but the techniques are applicable to other medical (and non-medical) domains with multi-modal data.
                 </p>
 
@@ -133,8 +132,8 @@ processEscapes: true
 
                 <p>The accompanying captions described the above layers in a systematic way e.g..</p>
 
-                <p style="font-style: italic; margin: 10px auto 10px auto; width: 600px; font-family: Courier New;">The upper layer shows fragmented basket weave keratosis with focal parakeratosis.
-                    The epidermis shows severe dysplasia. The dermis shows inflammation</p>
+                <p style="font-style: italic; margin: 10px auto 10px auto; width: 550px; font-family: Courier New;">The upper layer shows fragmented basket weave keratosis with focal parakeratosis.
+                    The epidermis shows severe dysplasia. The dermis shows inflammation.</p>
 
                 <p>
                     Instead of using a traditional Generative Adversarial Network (GAN) training paradigm, which <i>implicitly</i> learns to match a target distribution,
@@ -147,7 +146,7 @@ processEscapes: true
                 <p>
                     The video below shows the training progress of the adversarial training stage. The model learns the global structure of a highly-diverse
                     set of histological images rather quickly, with the majority of training dedicated to learning finer and finer detail.
-                    The model captures variations in all three tissue layers, including staining and background colours. Although it may look just a like traditional autoencoding,
+                    The model captures variations in all three tissue layers, including staining and background colours. Although it may look just a like traditional autoencoder,
                     the adversarial component contrains the model so that all inputs are placed in a structured latent space $w$, capturing the relationships between
                     features within the images.
                 </p>
@@ -162,10 +161,10 @@ processEscapes: true
             <div style="width: 100%; margin: auto; background: white;">
                 <div style="max-width: 700px; margin: auto;">
 
-                    <h2>Diverse Samples and Interpolations</h2>
+                    <h2 id="diverseSamples">Diverse Samples and Interpolations</h2>
                     <p>
                         We can demonstrate the learned representation clearly by <i>sampling</i> from the latent space (via a mapping network $F$, such as that $w=F(x)$, where $z \sim N(0, 1)$. Below you can
-                        diverse samples of <i>synthetic</i> images, and then interpolating between different points within $w$. The result is that every point within $w$ correponds to a
+                        see diverse samples of <i>synthetic</i> images, and their interpolations between different points within $w$. The result is that every point within $w$ correponds to a
                         real, or seemingly (conjectured) real image. Indeed, we can directly see for ourselves how a healthy tissue <i>transforms</i> into a cancerous tissue
                         ( according to how the model understands the world).
                     </p>
@@ -183,7 +182,7 @@ processEscapes: true
 
                 <p>
                     We can refine the way that we explore the structure of the latent space using labels associated with images. Indeed, it is a reasonable assumption that we would already have labels for
-                    real data, whether dense in the case of text, or sparse in the case of class labels. We can use the labels to define concept vectors, describing directions or routes within the latent space $w$
+                    real data, whether dense in the case of text, or sparse in the case of class labels. We can use the labels to define concept vectors, describing directions within the latent space $w$
                     that correpond to intentional semantic manipulations of the image content. Examples of this can be seen below, where images are transformed by moving their location in $w$-space along a particular
                     concept e.g. increased inflammation or increased dysplasia.
                 </p>
@@ -266,17 +265,17 @@ processEscapes: true
                 <div style="background-color: white; padding: 75px; margin:auto; max-width: 700px; text-align: left;">
 
                     <p>
-                        The above shows that we can use simple linear directions to characterise images in terms of highly-level concepts along a continuum. So just like we can describe for a human face, the smooth transition
-                        between smiling and note smiling, we can work towards characterising <i>cancer as a progression along a continuum</i>, rather than just binary. This has enormous for systematic and repeatable characterisation
-                        of cancer, alleviating the descrepancies associated with inter and intra-observer variable in pathologists [ref needed].
+                        The above shows that we can use simple linear directions to characterise images in terms of high-level concepts along a continuum. With this ability,
+                        we can work towards characterising <i>cancer as a progression along a continuum</i>, rather than just binary. This has enormous potential for systematic and repeatable characterisation
+                        of cancer, alleviating the discrepancies associated with inter and intra-observer variable in pathologists (Lewis et al., 2015).
                     </p>
 
 
                     <p>
-                        The features in the images above retain many correlations e.g. increased inflammation is correlates
-                        with increased dysplasia. In reality, such as features have much more independence. Consequently, as models improve and
-                        features in the latent space are further disentangle (e.g. using a Style Network [ref]), the value for this method to
-                        produced highly interpretable outputs and the potential for finer and finer separation of tissue progression increases.
+                        The features in the images above retain many correlations e.g. increased inflammation correlates
+                        with increased dysplasia. In reality, such features have more independence. Consequently, as models improve and
+                        features in the latent space are further disentangled (e.g. using a Style Network (Wu et al., 2021) ), the value for this method to
+                        produced highly interpretable outputs and the potential for finer and finer separation of the tissue progression increases.
                     </p>
 
                 </div>
@@ -294,9 +293,10 @@ processEscapes: true
 
                     <p>
                         The fact that we can sample from the latent space also helps to put bounds on what is and is not a realistic point in space. For example, one approach is to learn a 2-dimensional
-                        representation of both the <span class="tag" style="background: #ededed;">sampled (synthetic) images</span>, and the <span class="tag" style="background: #890da1; color: white;">real images</span>, and see where they do and do not overlap.  Exhaustive sampling reveals what every
+                        representation of both the <span class="tag" style="background: #ededed;">sampled (synthetic) images</span>, and the <span class="tag" style="background: #890da1; color: white;">real images</span>,
+                        and see where they do and do not overlap.  Exhaustive sampling reveals what every
                         single point looks like, as well as it's closet real data point, allowing proability estimates to be estabilished for a given region. This technique also reveals how the densities
-                        of the sampled (grey) and real distributions (purple) compare. Intuitively, images that fall outside of the "cloud of realism" can be easily identfied and visualised.
+                        of the sampled and real distributions compare. Intuitively, images that fall outside of the "cloud of realism" can be easily identfied and visualised.
                     </p>
 
 
@@ -333,12 +333,14 @@ processEscapes: true
 
                         <p>
                             Pathologists have created a highly specialised vocabulary to describe all the nuanced varations they see under the microscope. There is
-                            thus a natural pairing of images and words. When combined with text generation models (in this case a auto-regressive transformer), we
-                            can work towards a highly expressive characterisation of the entire latent space, using the nuanced language that pathologist themslves
-                            use. This firstly provides a way for us to criticise the knowledge within the model e.g. errors between images and their captions, but,
+                            thus a natural pairing of images and words. When combined with text generation models (in this case an auto-regressive transformer), we
+                            can work towards a highly-expressive characterisation of the entire latent space, using the nuanced language that pathologist themselves
+                            use. This firstly provides a way for us to criticise the knowledge within the model e.g. errors between images and their captions*, but,
                             secondly, provides a means for the model to <i>explain itself</i> in terms we already understand.
                         </p>
 
+                        <p style="font-size: 0.7em";>* The examples below, although accurate in some instances, still contain many errors between the images and caption.
+                            The interface is primarily an  example of what future interpretability / knowledge interfaces could look like and be used for.</p>
                     </div>
 
                     <div id="map">
@@ -366,25 +368,18 @@ processEscapes: true
                 <script src="./grid_annos.js"></script>
                 <script src="./script.js"></script>
 
-
-
-
             </section>
 
 
             <section id="references" style="max-width: 700px; margin: auto;">
 
-                <h2>Building and Explaining Internal Models of the World</h2>
-
-                <p>
-                    The above example is trained on well-curated image set... A future system will have a full grasp of all histological and medical terminology
-                    with which it can charactersise, not only a sub-set of skin cancers, but generalised to all of anatomoical pathology.
-                </p>
 
                 <h1>References</h1>
-                <p>[1]</p>
-                <p>[2]</p>
-                <p>[3]</p>
+
+                <p>Lewis Jr, J. S., Tarabishy, Y., Luo, J., Mani, H., Bishop, J. A., Leon, M. E., ... & Di Palma, S. (2015). Inter-and intra-observer variability in the classification of extracapsular extension in p16 positive oropharyngeal squamous cell carcinoma nodal metastases. Oral oncology, 51(11), 985-990.</p>
+
+                <p>Wu, Z., Lischinski, D., & Shechtman, E. (2021). Stylespace analysis: Disentangled controls for stylegan image generation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 12863-12872). </p>
+
             </section>
 
         </div>
