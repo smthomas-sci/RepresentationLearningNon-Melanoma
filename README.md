@@ -2,6 +2,16 @@
 
 Repository to accompany the [paper](https://arxiv.org/abs/2209.01779).
 
+```
+@article{thomas2022representation,
+  title={Representation Learning for Non-Melanoma Skin Cancer using a Latent Autoencoder},
+  author={Thomas, Simon Myles},
+  journal={arXiv preprint arXiv:2209.01779},
+  year={2022}
+}
+```
+
+
 Vist https://smthomas-sci.github.io/RepresentationLearningNon-Melanoma/ to see an interactive paper 
 which explores in-depth the possibilties for representation learning for computational pathology. 
 
