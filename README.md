@@ -1,7 +1,9 @@
 # Representation Learning for Non-Melanoma Skin Cancer using a Latent Autoencoder
 
 <figure>
-  <img id="iec_example" src="./interface/imgs/iec_regions/all.jpg" width="200" >
+  <p align="center">
+    <img id="iec_example" src="./interface/imgs/iec_regions/all.jpg" width="200" >
+  </p>
   <figcaption align="center">
     <i>The upper layer shows fragmented basket weave keratosis with focal parakeratosis. The epidermis shows severe dysplasia. The dermis shows inflammation.</i>
   </figcaption>
