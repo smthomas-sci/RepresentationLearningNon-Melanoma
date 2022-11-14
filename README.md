@@ -1,11 +1,10 @@
 # Representation Learning for Non-Melanoma Skin Cancer using a Latent Autoencoder
 
+Repository to accompany the [paper](https://arxiv.org/abs/2209.01779).
 
-Code and date to accompany the [paper]().
-
+**Code and Data coming soon**.
 
 # Training Curves
-
 
 ## Intraepidermal Carcinoma
 
