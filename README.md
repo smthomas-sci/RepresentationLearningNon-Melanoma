@@ -2,9 +2,17 @@
 
 Repository to accompany the [paper](https://arxiv.org/abs/2209.01779).
 
-**Code and Data coming soon**.
+Vist https://smthomas-sci.github.io/RepresentationLearningNon-Melanoma/ to see an interactive paper 
+which explores in-depth the possibilties for representation learning for computational pathology. 
+
+**Note: Code and Data planned for release**.
+
+
+<hr>
 
 # Training Curves
+
+The below graphs are an indication of the training stability of adversarial training conditioned on a pre-trained (spatial) autoencoder.
 
 ## Intraepidermal Carcinoma
 
