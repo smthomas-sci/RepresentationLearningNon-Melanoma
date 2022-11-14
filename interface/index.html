@@ -97,7 +97,7 @@ processEscapes: true
                     the real world distribution. We can then sample from the distribution, generating synethic images
                     or texts which resmeble real-world data. However, merely drawing samples from the distribution is limited in its application
                     to real-world problems. Indeed, a desirable ability is to be able to project existing data points into a structured latent
-                    space, not one just optimized for discriminatory tasks such as classification. Why this is desriable is arguably not-obvious
+                    space, not one only optimized for discriminatory tasks such as classification. Why this is desriable is arguably not-obvious
                     and also under-appreciated, particularly for high-stakes decision domains such as medical imaging.
                     Therefore, this work attempts to showcase several ways in which learning to generate real images can (in the long term) improve
                     the quality of our models and also deliver highly interpretable outputs. This work focuses on images and text within the context of digital pathology,
@@ -109,7 +109,7 @@ processEscapes: true
                     are visualy enhanced using H&E staining (pink and purple spectrum of colours). In this case, images of skin tissue
                     were used, representing healthly tissue and cancerous tissue (Intra-epidermal Carcinoma - IEC), and the graduations in between. The data
                     consisted of 11,588 images of size $256 \times 256$ pixels, each with an accompanying natural language description using a controlled
-                    vocabularly of anatomoical pathology terms.
+                    vocabularly of anatomical pathology terms.
                 </p>
 
                 <br>
@@ -183,7 +183,7 @@ processEscapes: true
                 <p>
                     We can refine the way that we explore the structure of the latent space using labels associated with images. Indeed, it is a reasonable assumption that we would already have labels for
                     real data, whether dense in the case of text, or sparse in the case of class labels. We can use the labels to define concept vectors, describing directions within the latent space $w$
-                    that correpond to intentional semantic manipulations of the image content. Examples of this can be seen below, where images are transformed by moving their location in $w$-space along a particular
+                    that correspond to intentional semantic manipulations of the image content. Examples of this can be seen below, where images are transformed by moving their location in $w$-space along a particular
                     concept e.g. increased inflammation or increased dysplasia.
                 </p>
 
